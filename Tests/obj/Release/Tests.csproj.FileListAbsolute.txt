@@ -1,0 +1,8 @@
+D:\работа\answer_recognize\V\Tests\Tests\bin\Release\Tests.exe
+D:\работа\answer_recognize\V\Tests\Tests\bin\Release\Tests.pdb
+D:\работа\answer_recognize\V\Tests\Tests\obj\Release\Tests.csproj.CoreCompileInputs.cache
+D:\работа\answer_recognize\V\Tests\Tests\obj\Release\Tests.exe
+D:\работа\answer_recognize\V\Tests\Tests\obj\Release\Tests.pdb
+D:\работа\answer_recognize\V\Tests\Tests\obj\Release\Tests.csproj.AssemblyReference.cache
+D:\работа\answer_recognize\V\Tests\Tests\obj\Release\Tests.Form1.resources
+D:\работа\answer_recognize\V\Tests\Tests\obj\Release\Tests.csproj.GenerateResource.cache
