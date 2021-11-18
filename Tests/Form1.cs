@@ -73,167 +73,172 @@ namespace Tests
             openFileDialog1 = new OpenFileDialog();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
+                
                     var sr = new StreamReader(openFileDialog1.FileName);
                     var arr = v1;
                     int i = 1;
-                    foreach (string line in System.IO.File.ReadLines(openFileDialog1.FileName, Encoding.GetEncoding(1251))) //Encoding.GetEncoding(1251)
+                    try
                     {
-                        if (String.IsNullOrEmpty(line))
-                            continue;
-                        //richTextBox1.Text += line;
-                        if (line.Contains("Вариант"))
+                        foreach (string line in System.IO.File.ReadLines(openFileDialog1.FileName, Encoding.GetEncoding(1251))) //Encoding.GetEncoding(1251)
                         {
-                            string ss;
-                            try
+                            if (String.IsNullOrEmpty(line))
+                                continue;
+                            //richTextBox1.Text += line;
+                            if (line.Contains("Вариант"))
                             {
-                                ss = String.Concat(line[line.IndexOf(":") + 1], line[line.IndexOf(":") + 2]);
+                                string ss;
+                                try
+                                {
+                                    ss = String.Concat(line[line.IndexOf(":") + 1], line[line.IndexOf(":") + 2]);
+                                }
+                                catch
+                                {
+                                    ss = line[line.IndexOf(":") + 1].ToString();
+                                }
+
+                                switch (ss.Trim())
+                                {
+                                    case "1":
+                                        arr = v1;
+
+                                        break;
+                                    case "2":
+                                        arr = v2;
+
+                                        break;
+                                    case "3":
+                                        arr = v3;
+
+                                        break;
+                                    case "4":
+                                        arr = v4;
+
+                                        break;
+                                    case "5":
+                                        arr = v5;
+
+                                        break;
+                                    case "6":
+                                        arr = v6;
+
+                                        break;
+                                    case "7":
+                                        arr = v7;
+
+                                        break;
+                                    case "8":
+                                        arr = v8;
+
+                                        break;
+                                    case "9":
+                                        arr = v9;
+
+                                        break;
+                                    case "10":
+                                        arr = v10;
+
+                                        break;
+                                    case "11":
+                                        arr = v11;
+
+                                        break;
+                                    case "12":
+                                        arr = v12;
+
+                                        break;
+                                    case "13":
+                                        arr = v13;
+
+                                        break;
+                                    case "14":
+                                        arr = v14;
+
+                                        break;
+                                    case "15":
+                                        arr = v15;
+
+                                        break;
+                                    case "16":
+                                        arr = v16;
+
+                                        break;
+                                    case "17":
+                                        arr = v17;
+
+                                        break;
+                                    case "18":
+                                        arr = v18;
+
+                                        break;
+                                    case "19":
+                                        arr = v19;
+
+                                        break;
+                                    case "20":
+                                        arr = v20;
+
+                                        break;
+                                    case "21":
+                                        arr = v21;
+
+                                        break;
+                                    case "22":
+                                        arr = v22;
+
+                                        break;
+                                    case "23":
+                                        arr = v23;
+
+                                        break;
+                                    case "24":
+                                        arr = v24;
+
+                                        break;
+                                    case "25":
+                                        arr = v25;
+
+                                        break;
+                                    case "26":
+                                        arr = v26;
+
+                                        break;
+                                    case "27":
+                                        arr = v27;
+
+                                        break;
+                                    case "28":
+                                        arr = v28;
+
+                                        break;
+                                    case "29":
+                                        arr = v29;
+
+                                        break;
+                                    case "30":
+                                        arr = v30;
+
+                                        break;
+                                }
+                                i = 1;
+                                continue;
+
                             }
-                            catch
-                            {
-                                ss = line[line.IndexOf(":") + 1].ToString();
-                            }
-
-                            switch (ss.Trim())
-                            {
-                                case "1":
-                                    arr = v1;
-                                    
-                                    break;
-                                case "2":
-                                    arr = v2;
-                                    
-                                    break;
-                                case "3":
-                                    arr = v3;
-                                    
-                                    break;
-                                case "4":
-                                    arr = v4;
-
-                                    break;
-                                case "5":
-                                    arr = v5;
-
-                                    break;
-                                case "6":
-                                    arr = v6;
-
-                                    break;
-                                case "7":
-                                    arr = v7;
-
-                                    break;
-                                case "8":
-                                    arr = v8;
-
-                                    break;
-                                case "9":
-                                    arr = v9;
-
-                                    break;
-                                case "10":
-                                    arr = v10;
-
-                                    break;
-                                case "11":
-                                    arr = v11;
-
-                                    break;
-                                case "12":
-                                    arr = v12;
-
-                                    break;
-                                case "13":
-                                    arr = v13;
-
-                                    break;
-                                case "14":
-                                    arr = v14;
-
-                                    break;
-                                case "15":
-                                    arr = v15;
-
-                                    break;
-                                case "16":
-                                    arr = v16;
-
-                                    break;
-                                case "17":
-                                    arr = v17;
-
-                                    break;
-                                case "18":
-                                    arr = v18;
-
-                                    break;
-                                case "19":
-                                    arr = v19;
-
-                                    break;
-                                case "20":
-                                    arr = v20;
-
-                                    break;
-                                case "21":
-                                    arr = v21;
-
-                                    break;
-                                case "22":
-                                    arr = v22;
-
-                                    break;
-                                case "23":
-                                    arr = v23;
-
-                                    break;
-                                case "24":
-                                    arr = v24;
-
-                                    break;
-                                case "25":
-                                    arr = v25;
-
-                                    break;
-                                case "26":
-                                    arr = v26;
-
-                                    break;
-                                case "27":
-                                    arr = v27;
-
-                                    break;
-                                case "28":
-                                    arr = v28;
-
-                                    break;
-                                case "29":
-                                    arr = v29;
-
-                                    break;
-                                case "30":
-                                    arr = v30;
-
-                                    break;
-                            }
-                            i = 1;
-                            continue;
-
+                           
+                                arr[i++] = Int32.Parse(line[line.LastIndexOf(":") + 1].ToString());
+                            
+                            
                         }
-                        arr[i++] = Int32.Parse(line[line.LastIndexOf(":") + 1].ToString());
-
+                        label1.Visible = true;
+                        btnStu.Enabled = true;
+                        btnFolder.Enabled = true;
                     }
-                    label1.Visible = true;
-                    btnStu.Enabled = true;
-                    btnFolder.Enabled = true;
-                }
-                catch (SecurityException ex)
-                {
-                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
-                    $"Details:\n\n{ex.StackTrace}");
-                }
+                    catch 
+                    {
+                        MessageBox.Show($"Ошибка в файле правильных ответов " + openFileDialog1.FileName);
+                    }
+                    
+                
+                
                 
             }
         }
@@ -251,188 +256,194 @@ namespace Tests
             int h = 0;
             int tru = 0;
             int ll = 0;
-
-            foreach (string line in System.IO.File.ReadLines(file, Encoding.GetEncoding(1251)))
+            try
             {
-                if (String.IsNullOrEmpty(line))
-                    continue;
-                
-                if (h < 3)
+                foreach (string line in System.IO.File.ReadLines(file, Encoding.GetEncoding(1251)))
                 {
-                    if (single)
+                    if (String.IsNullOrEmpty(line))
+                        continue;
+
+                    if (h < 3)
                     {
-                        head += line + '\n';
-                    }
-                    else head += line + '\t';
-                    h++;
-                    continue;
-                }
-                //richTextBox1.Text += line;
-                if (line.Contains("Вариант"))
-                {
                         if (single)
                         {
-                          head += line + '\n';
-                          head += "Вопрос    Студент  Верный   Результат" + '\n';
+                            head += line + '\n';
+                        }
+                        else head += line + '\t';
+                        h++;
+                        continue;
+                    }
+                    //richTextBox1.Text += line;
+                    if (line.Contains("Вариант"))
+                    {
+                        if (single)
+                        {
+                            head += line + '\n';
+                            head += "Вопрос    Студент  Верный   Результат" + '\n';
                         }
                         else head += line + '\t';
 
-                    string ss;
-                    try
-                    {
-                        ss = String.Concat(line[line.IndexOf(":") + 1], line[line.IndexOf(":") + 2]);
+                        string ss;
+                        try
+                        {
+                            ss = String.Concat(line[line.IndexOf(":") + 1], line[line.IndexOf(":") + 2]);
+                        }
+                        catch
+                        {
+                            ss = line[line.IndexOf(":") + 1].ToString();
+                        }
+
+                        switch (ss.Trim())
+                        {
+                            case "1":
+                                arr = v1;
+
+                                break;
+                            case "2":
+                                arr = v2;
+
+                                break;
+                            case "3":
+                                arr = v3;
+
+                                break;
+                            case "4":
+                                arr = v4;
+
+                                break;
+                            case "5":
+                                arr = v5;
+
+                                break;
+                            case "6":
+                                arr = v6;
+
+                                break;
+                            case "7":
+                                arr = v7;
+
+                                break;
+                            case "8":
+                                arr = v8;
+
+                                break;
+                            case "9":
+                                arr = v9;
+
+                                break;
+                            case "10":
+                                arr = v10;
+
+                                break;
+                            case "11":
+                                arr = v11;
+
+                                break;
+                            case "12":
+                                arr = v12;
+
+                                break;
+                            case "13":
+                                arr = v13;
+
+                                break;
+                            case "14":
+                                arr = v14;
+
+                                break;
+                            case "15":
+                                arr = v15;
+
+                                break;
+                            case "16":
+                                arr = v16;
+
+                                break;
+                            case "17":
+                                arr = v17;
+
+                                break;
+                            case "18":
+                                arr = v18;
+
+                                break;
+                            case "19":
+                                arr = v19;
+
+                                break;
+                            case "20":
+                                arr = v20;
+
+                                break;
+                            case "21":
+                                arr = v21;
+
+                                break;
+                            case "22":
+                                arr = v22;
+
+                                break;
+                            case "23":
+                                arr = v23;
+
+                                break;
+                            case "24":
+                                arr = v24;
+
+                                break;
+                            case "25":
+                                arr = v25;
+
+                                break;
+                            case "26":
+                                arr = v26;
+
+                                break;
+                            case "27":
+                                arr = v27;
+
+                                break;
+                            case "28":
+                                arr = v28;
+
+                                break;
+                            case "29":
+                                arr = v29;
+
+                                break;
+                            case "30":
+                                arr = v30;
+
+                                break;
+                        }
+                        i = 1;
+                        continue;
+
                     }
-                    catch
+                    ll++;
+                    if (arr[i++] == Int32.Parse(line[line.Length - 1].ToString()))
                     {
-                        ss = line[line.IndexOf(":") + 1].ToString();
-                    }
+                        if (single)
+                        {
+                            head += (i - 1).ToString() + " \t | " + Int32.Parse(line[line.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " TRUE\n";
+                        }
 
-                    switch (ss.Trim())
+                        tru++;
+                    }
+                    else
                     {
-                        case "1":
-                            arr = v1;
+                        if (single)
+                        {
+                            head += (i - 1).ToString() + " \t | " + Int32.Parse(line[line.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " FALSE\n";
+                        }
 
-                            break;
-                        case "2":
-                            arr = v2;
-
-                            break;
-                        case "3":
-                            arr = v3;
-
-                            break;
-                        case "4":
-                            arr = v4;
-
-                            break;
-                        case "5":
-                            arr = v5;
-
-                            break;
-                        case "6":
-                            arr = v6;
-
-                            break;
-                        case "7":
-                            arr = v7;
-
-                            break;
-                        case "8":
-                            arr = v8;
-
-                            break;
-                        case "9":
-                            arr = v9;
-
-                            break;
-                        case "10":
-                            arr = v10;
-
-                            break;
-                        case "11":
-                            arr = v11;
-
-                            break;
-                        case "12":
-                            arr = v12;
-
-                            break;
-                        case "13":
-                            arr = v13;
-
-                            break;
-                        case "14":
-                            arr = v14;
-
-                            break;
-                        case "15":
-                            arr = v15;
-
-                            break;
-                        case "16":
-                            arr = v16;
-
-                            break;
-                        case "17":
-                            arr = v17;
-
-                            break;
-                        case "18":
-                            arr = v18;
-
-                            break;
-                        case "19":
-                            arr = v19;
-
-                            break;
-                        case "20":
-                            arr = v20;
-
-                            break;
-                        case "21":
-                            arr = v21;
-
-                            break;
-                        case "22":
-                            arr = v22;
-
-                            break;
-                        case "23":
-                            arr = v23;
-
-                            break;
-                        case "24":
-                            arr = v24;
-
-                            break;
-                        case "25":
-                            arr = v25;
-
-                            break;
-                        case "26":
-                            arr = v26;
-
-                            break;
-                        case "27":
-                            arr = v27;
-
-                            break;
-                        case "28":
-                            arr = v28;
-
-                            break;
-                        case "29":
-                            arr = v29;
-
-                            break;
-                        case "30":
-                            arr = v30;
-
-                            break;
                     }
-                    i = 1;
-                    continue;
 
                 }
-                ll++;
-                if (arr[i++] == Int32.Parse(line[line.Length - 1].ToString()))
-                {
-                    if (single)
-                    {
-                        head += (i - 1).ToString() + " \t | " + Int32.Parse(line[line.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " TRUE\n";
-                    }
-                    
-                    tru++;
-                }
-                else
-                {
-                    if (single) 
-                    {
-                        head += (i - 1).ToString() + " \t | " + Int32.Parse(line[line.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " FALSE\n";
-                    }
-                    
-                }
-
+            }
+            catch
+            {
+                MessageBox.Show($"Ошибка в файле студента \n" + file);
             }
             tru = (int)((float)(((float)tru / ll) + 0.005) * 100);
             head += "Результат " + tru.ToString() + "%\n";
@@ -459,10 +470,9 @@ namespace Tests
                     vedomost += head + "\n";
                     
                 }
-                catch (SecurityException ex)
+                catch
                 {
-                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
-                    $"Details:\n\n{ex.StackTrace}");
+                    MessageBox.Show($"Ошибка в файле студента \n" + openFileDialog1.FileName);
                 }
 
                 richTextBox1.Text = vedomost;
