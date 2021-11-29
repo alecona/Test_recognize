@@ -84,7 +84,7 @@ namespace Tests
                             if (String.IsNullOrEmpty(line))
                                 continue;
                             //richTextBox1.Text += line;
-                            if (line.Contains("Вариант"))
+                            if (line.Contains("Вариант") || line.Contains("вариант"))
                             {
                                 string ss;
                                 try
@@ -274,7 +274,7 @@ namespace Tests
                         continue;
                     }
                     //richTextBox1.Text += line;
-                    if (line.Contains("Вариант"))
+                    if (line.Contains("Вариант") || line.Contains("вариант"))
                     {
                         if (single)
                         {
@@ -283,14 +283,21 @@ namespace Tests
                         }
                         else head += line + '\t';
 
-                        string ss;
+                        string ss = line;
+
                         try
                         {
-                            ss = String.Concat(line[line.IndexOf(":") + 1], line[line.IndexOf(":") + 2]);
+                            ss = ss.Replace("Вариант", "");
+                            ss = ss.Replace("вариант", "");
+                            ss = ss.Replace(":", "");
+                            ss = ss.Replace(" ", "");
+                            ss = ss.Replace("_", "");
+                            //ss = String.Concat(line[line.IndexOf(":") + 1], line[line.IndexOf(":") + 2]);
                         }
                         catch
                         {
-                            ss = line[line.IndexOf(":") + 1].ToString();
+                            //ss = line[line.IndexOf(":") + 1].ToString();
+                            MessageBox.Show($"OOOOPS");
                         }
 
                         switch (ss.Trim())
