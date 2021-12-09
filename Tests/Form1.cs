@@ -223,8 +223,9 @@ namespace Tests
                                 continue;
 
                             }
-                           
-                                arr[i++] = Int32.Parse(line[line.LastIndexOf(":") + 1].ToString());
+                        
+                            arr[i] = Int32.Parse(line[line.LastIndexOf(":") + 1].ToString());
+                            i++;
                             
                             
                         }
@@ -428,11 +429,12 @@ namespace Tests
 
                     }
                     ll++;
-                    if (arr[i++] == Int32.Parse(line[line.Length - 1].ToString()))
+                    string lline = line.Replace(" ", "");
+                    if (arr[i++] == Int32.Parse(lline[lline.Length - 1].ToString()))
                     {
                         if (single)
                         {
-                            head += (i - 1).ToString() + " \t | " + Int32.Parse(line[line.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " TRUE\n";
+                            head += (i - 1).ToString() + " \t | " + Int32.Parse(lline[lline.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " TRUE\n";
                         }
 
                         tru++;
@@ -441,7 +443,7 @@ namespace Tests
                     {
                         if (single)
                         {
-                            head += (i - 1).ToString() + " \t | " + Int32.Parse(line[line.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " FALSE\n";
+                            head += (i - 1).ToString() + " \t | " + Int32.Parse(lline[lline.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " FALSE\n";
                         }
 
                     }
