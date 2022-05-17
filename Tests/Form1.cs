@@ -17,9 +17,10 @@ namespace Tests
         string vedomost;
         string head = "";
         bool single = true;
-        
 
-        int[] v1 = new int[31];
+        int[,] matr = new int[31, 512];
+
+        /**int[] v1 = new int[31];
         int[] v2 = new int[31];
         int[] v3 = new int[31];
         int[] v4 = new int[31];
@@ -48,7 +49,7 @@ namespace Tests
         int[] v27 = new int[31];
         int[] v28 = new int[31];
         int[] v29 = new int[31];
-        int[] v30 = new int[31];
+        int[] v30 = new int[31];**/
 
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -74,29 +75,30 @@ namespace Tests
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 
-                    var sr = new StreamReader(openFileDialog1.FileName);
-                    var arr = v1;
-                    int i = 1;
-                    try
+                //var sr = new StreamReader(openFileDialog1.FileName);
+                //var arr = v1;
+                int variant = 1;
+                int i = 0;
+                try
+                {
+                    foreach (string line in System.IO.File.ReadLines(openFileDialog1.FileName, Encoding.GetEncoding(1251))) //Encoding.GetEncoding(1251)
                     {
-                        foreach (string line in System.IO.File.ReadLines(openFileDialog1.FileName, Encoding.GetEncoding(1251))) //Encoding.GetEncoding(1251)
+                        if (String.IsNullOrEmpty(line))
+                            continue;
+                        //richTextBox1.Text += line;
+                        if (line.Contains("Вариант") || line.Contains("вариант"))
                         {
-                            if (String.IsNullOrEmpty(line))
-                                continue;
-                            //richTextBox1.Text += line;
-                            if (line.Contains("Вариант") || line.Contains("вариант"))
+                            string ss;
+                            try
                             {
-                                string ss;
-                                try
-                                {
-                                    ss = String.Concat(line[line.IndexOf(":") + 1], line[line.IndexOf(":") + 2]);
-                                }
-                                catch
-                                {
-                                    ss = line[line.IndexOf(":") + 1].ToString();
-                                }
+                                ss = String.Concat(line[line.IndexOf(":") + 1], line[line.IndexOf(":") + 2]);
+                            }
+                            catch
+                            {
+                                ss = line[line.IndexOf(":") + 1].ToString();
+                            }
 
-                                switch (ss.Trim())
+                            /**switch (ss.Trim())
                                 {
                                     case "1":
                                         arr = v1;
@@ -218,28 +220,37 @@ namespace Tests
                                         arr = v30;
 
                                         break;
-                                }
-                                i = 1;
-                                continue;
+                                }**/
+                            i = 1;
+                            variant = int.Parse(ss);
+                                //continue;
 
-                            }
-                        
-                            arr[i] = Int32.Parse(line[line.LastIndexOf(":") + 1].ToString());
-                            i++;
-                            
-                            
                         }
-                        label1.Visible = true;
-                        btnStu.Enabled = true;
-                        btnFolder.Enabled = true;
+                        matr[variant, i] = Int32.Parse(line[line.LastIndexOf(":") + 1].ToString());
+                        //arr[i] = Int32.Parse(line[line.LastIndexOf(":") + 1].ToString());
+                        i++;
+                            
+                            
                     }
-                    catch 
-                    {
-                        MessageBox.Show($"Ошибка в файле правильных ответов " + openFileDialog1.FileName);
-                    }
+                    label1.Visible = true;
+                    btnStu.Enabled = true;
+                    btnFolder.Enabled = true;
+                }
+                catch
+                {
+                    MessageBox.Show($"Ошибка в файле правильных ответов " + openFileDialog1.FileName);
+                }
                     
                 
-                
+                for(int x = 0; x < 31; x++)
+                {
+                    for (int y = 0; y < 31; y++)
+                    {
+                        richTextBox1.Text += matr[x, y].ToString();
+                        richTextBox1.Text += " ";
+                    }
+                    richTextBox1.Text += "\n";
+                }
                 
             }
         }
@@ -252,11 +263,12 @@ namespace Tests
             head = "";
             
             //var sr = new StreamReader(openFileDialog1.FileName);
-            var arr = v1;
+            //var arr = v1;
             int i = 1;
             int h = 0;
             int tru = 0;
             int ll = 0;
+            int variant = 1;
             try
             {
                 foreach (string line in System.IO.File.ReadLines(file, Encoding.GetEncoding(1251)))
@@ -298,10 +310,10 @@ namespace Tests
                         catch
                         {
                             //ss = line[line.IndexOf(":") + 1].ToString();
-                            MessageBox.Show($"OOOOPS");
+                            MessageBox.Show($"OOOOPS(строка 290-300)");
                         }
 
-                        switch (ss.Trim())
+                        /**switch (ss.Trim())
                         {
                             case "1":
                                 arr = v1;
@@ -423,14 +435,16 @@ namespace Tests
                                 arr = v30;
 
                                 break;
-                        }
+                        }**/
+                        variant = int.Parse(ss);
                         i = 1;
                         continue;
 
                     }
                     ll++;
                     string lline = line.Replace(" ", "");
-                    if (arr[i++] == Int32.Parse(lline[lline.Length - 1].ToString()))
+                    
+                    /**if (arr[i++] == Int32.Parse(lline[lline.Length - 1].ToString()))
                     {
                         if (single)
                         {
@@ -444,6 +458,23 @@ namespace Tests
                         if (single)
                         {
                             head += (i - 1).ToString() + " \t | " + Int32.Parse(lline[lline.Length - 1].ToString()) + " \t| " + arr[i - 1] + " \t| " + " FALSE\n";
+                        }
+
+                    }**/
+                    if (matr[variant, ++i] == Int32.Parse(lline[lline.Length - 1].ToString()))
+                    {
+                        if (single)
+                        {
+                            head += (i - 1).ToString() + " \t | " + Int32.Parse(lline[lline.Length - 1].ToString()) + " \t| " + matr[variant, i] + " \t| " + " TRUE\n";
+                        }
+
+                        tru++;
+                    }
+                    else
+                    {
+                        if (single)
+                        {
+                            head += (i - 1).ToString() + " \t | " + Int32.Parse(lline[lline.Length - 1].ToString()) + " \t| " + matr[variant, i] + " \t| " + " FALSE\n";
                         }
 
                     }
